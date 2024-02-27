@@ -1,0 +1,32 @@
+.table{
+    position: absolute;
+    width: 60%;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #e0cbbd;
+    margin: auto;
+    padding: 0px 15px;
+}
+
+  li>span{
+    font-weight: bold;
+  }
+
+  .btn{
+    position: absolute;
+    padding: 10px 15px;
+    background-color: #d38a5a;
+    color: white;
+    border-radius:5px ;
+    cursor: pointer;
+  }
+  .btn-without{
+    padding: 10px 15px;
+    background-color: #d38a5a;
+    color: white;
+    border-radius:5px ;
+    cursor: pointer;
+    margin-top: 16px;
+  }
