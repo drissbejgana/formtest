@@ -2,9 +2,9 @@ import * as React from 'react';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import AddressForm from './sections';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import Form from './sections';
 
 
 
@@ -17,7 +17,7 @@ export default function StartUp() {
           <Typography component="h1" variant="h4" align="center">
             Start
           </Typography>
-          <AddressForm />      
+          <Form />      
         </Paper>
       </Container>
       </LocalizationProvider>

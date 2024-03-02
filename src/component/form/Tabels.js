@@ -8,8 +8,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-export default function BasicTable({title,rows,titles}) {
+ function BasicTable({title,rows,titles}) {
 
+  console.log('render')
    
   return (
     <TableContainer  component={Paper}>
@@ -17,13 +18,13 @@ export default function BasicTable({title,rows,titles}) {
         <TableHead>
           <TableRow>
             <TableCell>{title}</TableCell>
-            {titles.map((title)=>
+            {titles?.map((title)=>
             <TableCell key={title} align="right">{title}</TableCell>
             )}
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows?.map((row) => (
 
             <TableRow
               key={row?.name}
@@ -46,3 +47,5 @@ export default function BasicTable({title,rows,titles}) {
     </TableContainer>
   );
 }
+
+export default React.memo(BasicTable)
