@@ -8,6 +8,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { useEffect, useReducer } from 'react';
 
 import TableForm from './TableForm';
+import { useState } from 'react';
 
 
 
@@ -101,6 +102,7 @@ const initialstate={
 
 export default function Form() {
   const [state,dispatch]=useReducer(reducer,initialstate)
+  const [required,setRequired]=useState(false)
 
  function handleformationchange(e){
   let listofchecked=[...state.formation]
@@ -130,6 +132,31 @@ useEffect(()=>{
 console.log(state)
 },[state])
 
+function handlesubmit(){
+  if(state.formation.length===0){
+      setRequired(true)
+  }
+  else if(state.genre===''){
+      setRequired(true)
+  }
+  else if(state.dateN===''){
+      setRequired(true)
+  } 
+  else if(state.nationalite===''){
+    setRequired(true)
+} 
+else if(state.etat===''){
+  setRequired(true)
+} 
+else if(state.enfants===''){
+  setRequired(true)
+} 
+ else{
+  window.alert(JSON.stringify(state))
+
+ } 
+
+}
 
   return (
     <>
@@ -169,6 +196,8 @@ console.log(state)
             control={<Checkbox onChange={handleformationchange} color="secondary" name="Formation Professionelle" value="Formation Professionelle" />}
             label="Formation Professionelle"
           />
+          { (required && state.formation.length===0 )? <span style={{color:'red'}}>this qestion is required</span>:''}
+
         </Grid>
 
 
@@ -186,6 +215,8 @@ console.log(state)
             <MenuItem value='F'>Femelle</MenuItem>
         </Select>
         </FormControl>
+        { (required && state.genre==='' )? <span style={{color:'red'}}>this qestion is required</span>:''}
+
         </Grid>
 
         <Grid item xs={12} >
@@ -193,6 +224,7 @@ console.log(state)
          Date Naissance
         </Typography>
              <DatePicker onChange={handleDateChange} />
+        { (required && state.dateN==='' )? <span style={{color:'red'}}>this qestion is required</span>:''}
         </Grid>
        
         <Grid item xs={12}>
@@ -208,6 +240,8 @@ console.log(state)
             variant="standard"
             onChange={(e)=>{dispatch({type:'selectnationalite',nationalite:e.target.value})}}
           />
+        { (required && state.nationalite==='' )? <span style={{color:'red'}}>this qestion is required</span>:''}
+
         </Grid>
   
         <Grid item xs={12}>
@@ -235,6 +269,8 @@ console.log(state)
             onChange={(e)=>dispatch({type:'changeetat',etat:e.target.value})
           }
           />:null}
+        { (required && state.etat==='' )? <span style={{color:'red'}}>this qestion is required</span>:''}
+
         </Grid>
 
 
@@ -252,23 +288,30 @@ console.log(state)
             <MenuItem value='Non'>Non</MenuItem>
         </Select>
         </FormControl>
+        { (required && state.enfants==='' )? <span style={{color:'red'}}>this qestion is required</span>:''}
+
          </Grid>
-
-
 
 
       </Grid>
 
       <TableForm langues={state.langues} officeit={state.officeit} skills={state.skills} dispatch={dispatch} />  
 
-      <Rating
+      <Grid item xs={12}>
+        <Typography>
+        Comment aimez-vous le formulaire de contact ?
+
+        </Typography>
+        <Rating
         name="simple-controlled"
         value={state?.rating}
         onChange={(event, newValue) => {
           dispatch({type:'rating',rating:newValue})
         }}
       />
-      <Button  variant="contained" >Send</Button>  
+        </Grid>
+     
+      <Button onClick={handlesubmit} variant="contained" >Submit</Button>  
     </>
   );
 }

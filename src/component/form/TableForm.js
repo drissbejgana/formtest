@@ -466,7 +466,7 @@ const TableForm = ({langues,skills,officeit,dispatch}) => {
         name="excel"
         inputProps={{ 'aria-label': 'Basique' }}
         />),
-        createData('powerpoint', <Radio
+        createData('Powerpoint', <Radio
         checked={officeit.powerpoint  === 'TBien'}
         onChange={handleChangesofficeit}
         value="TBien"
@@ -493,7 +493,7 @@ const TableForm = ({langues,skills,officeit,dispatch}) => {
         name="powerpoint"
         inputProps={{ 'aria-label': 'Basique' }}
         />),
-        createData('PowerPoint', <Radio
+        createData('Outlook', <Radio
         checked={officeit.outlook  === 'TBien'}
         onChange={handleChangesofficeit}
         value="TBien"
@@ -507,10 +507,10 @@ const TableForm = ({langues,skills,officeit,dispatch}) => {
         inputProps={{ 'aria-label': 'Bien' }}
         />,
         <Radio
-        checked={officeit.en  === 'Moyen'}
+        checked={officeit.outlook  === 'Moyen'}
         onChange={handleChangesofficeit}
         value="Moyen"
-        name="en"
+        name="outlook"
         inputProps={{ 'aria-label': 'Moyen' }}
         />,
         <Radio
